@@ -1,0 +1,96 @@
+@pic: "./img/pic.png";
+@pic2: "./img/pic2.png";
+@picSvg: "./img/pic.svg";
+
+.image {
+  background-size: image-size(@pic); // 图片大小
+  width: image-width(@pic); // 图片宽度
+  height: image-height(@pic); // 图片高度
+}
+
+.convert {
+  width: convert(9s, "ms"); // 将9秒转成9000毫秒
+  width: convert(9m, "cm"); // 将9米转成900厘米
+  width: convert(45deg, "rad"); // 将角度转成弧度
+}
+
+.data-uri {
+  background: data-uri(@pic2);
+  background: data-uri("image/jpeg;base64", @pic2);
+  background: data-uri("image/svg+xml;charset=UTF-8", @picSvg);
+}
+
+.unit {
+  width: unit(5, px);
+  width: unit(5, em);
+  width: unit(5px);
+  height: unit(5em);
+}
+
+.get-unit {
+  width: get-unit(5px);
+}
+
+.svg-gradien {
+  @list: red, green 30%, blue;
+  background-image: svg-gradient(to right, @list);
+  width: 300px;
+  height: 20px;
+}
+
+.e {
+  filter: e("ms:alwaysHasItsOwnSyntax.For.Stuff()");
+  width: ~"ms:alwaysHasItsOwnSyntax.For.Stuff()";
+  height: %("%apx", 100);
+}
+
+.replace {
+  width: replace("blue red", "red", "blue");
+}
+
+.length {
+  @list: "a", "b", "c";
+  width: length(@list);
+}
+.extract {
+  @list: "a", "b", "c";
+  width: extract(@list, 2);
+}
+
+.math {
+  width: ceil(2.8);
+  width: floor(2.8);
+  width: percentage(0.28);
+  width: round(1.678, 0);
+  width: round(1.678, 1);
+  width: round(1.678, 1);
+  width: sqrt(2m);
+  width: abs(-3);
+  width: sin(30deg);
+  width: asin(0);
+  width: pi();
+  width: pow(2, 3);
+  width: mod(11, 6);
+  width: min(5, 3, 6, 2, 7, 2);
+  width: max(5, 3, 6, 2, 7, 2);
+}
+
+.type {
+  @c: {
+    color: red;
+  };
+  width: isnumber(5px);
+  height: isstring("123");
+  border: iscolor(#fff);
+  color: iskeyword(keyword);
+  background: isurl(url(''));
+  border-left: ispixel(5px);
+  border-right: isem(5em);
+  border-top: ispercentage(5%);
+  border-bottom: isunit(11px, px);
+  border-block-end: isruleset(@c);
+}
+
+.color {
+  color: red(#fe7654);
+}
